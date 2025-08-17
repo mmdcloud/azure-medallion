@@ -4,10 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 4.0"
     }
-    vault = {
-      source  = "hashicorp/vault"
-      version = "~> 4.0"
-    }
+    # vault = {
+    #   source  = "hashicorp/vault"
+    #   version = "~> 4.0"
+    # }
     random = {
       source  = "hashicorp/random"
       version = "~> 3.0"
@@ -21,7 +21,7 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
-  subscription_id = "807d385c-fe57-4882-9e48-1bb1077091f1"
+  subscription_id = "eef50188-7481-49ef-81c8-f6552808f870"
 }
 
-provider "vault" {}
+# provider "vault" {}
