@@ -155,26 +155,26 @@ resource "azurerm_data_factory" "etl_adf" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-# resource "azurerm_data_factory_linked_service_azure_sql_database" "sql_database_linked_service" {
-#   name              = "example"
-#   data_factory_id   = azurerm_data_factory.etl_adf.id
-#   connection_string = "data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30"
-# }
+resource "azurerm_data_factory_linked_service_azure_sql_database" "sql_database_linked_service" {
+  name              = "sql-database-linked-service"
+  data_factory_id   = azurerm_data_factory.etl_adf.id
+  connection_string = "data source=serverhostname;initial catalog=master;user id=testUser;Password=test;integrated security=False;encrypt=True;connection timeout=30"
+}
 
-# resource "azurerm_data_factory_dataset_azure_sql_table" "customers_dataset" {
-#   name              = "retail-customers"
-#   data_factory_id   = azurerm_data_factory.etl_adf.id
-#   linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
-# }
+resource "azurerm_data_factory_dataset_azure_sql_table" "customers_dataset" {
+  name              = "retail-customers"
+  data_factory_id   = azurerm_data_factory.etl_adf.id
+  linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
+}
 
-# resource "azurerm_data_factory_dataset_azure_sql_table" "products_dataset" {
-#   name              = "retail-products"
-#   data_factory_id   = azurerm_data_factory.etl_adf.id
-#   linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
-# }
+resource "azurerm_data_factory_dataset_azure_sql_table" "products_dataset" {
+  name              = "retail-products"
+  data_factory_id   = azurerm_data_factory.etl_adf.id
+  linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
+}
 
-# resource "azurerm_data_factory_dataset_azure_sql_table" "orders_dataset" {
-#   name              = "retail-store"
-#   data_factory_id   = azurerm_data_factory.etl_adf.id
-#   linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
-# }
+resource "azurerm_data_factory_dataset_azure_sql_table" "orders_dataset" {
+  name              = "retail-store"
+  data_factory_id   = azurerm_data_factory.etl_adf.id
+  linked_service_id = azurerm_data_factory_linked_service_azure_sql_database.sql_database_linked_service.id
+}
